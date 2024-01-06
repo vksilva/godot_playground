@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcxaqdtblugt7"]
+
+[ext_resource type="Texture2D" uid="uid://c2socuaoifhda" path="res://sprites/track.png" id="1_sm0s7"]
+[ext_resource type="Texture2D" uid="uid://odlhjgmm3fuq" path="res://sprites/car_body.png" id="2_r6pdn"]
+[ext_resource type="Script" path="res://scripts/car_controller.gd" id="3_hamfo"]
+[ext_resource type="Texture2D" uid="uid://dwrkhr1bktgq7" path="res://sprites/wheel.png" id="4_f48eg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Track" type="Sprite2D" parent="."]
+texture = ExtResource("1_sm0s7")
+
+[node name="CarBody" type="Sprite2D" parent="."]
+texture = ExtResource("2_r6pdn")
+script = ExtResource("3_hamfo")
+
+[node name="Wheel" type="Sprite2D" parent="."]
+texture = ExtResource("4_f48eg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
