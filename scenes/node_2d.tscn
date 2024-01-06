@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcxaqdtblugt7"]
+[gd_scene load_steps=6 format=3 uid="uid://dcxaqdtblugt7"]
 
 [ext_resource type="Texture2D" uid="uid://c2socuaoifhda" path="res://sprites/track.png" id="1_sm0s7"]
 [ext_resource type="Texture2D" uid="uid://odlhjgmm3fuq" path="res://sprites/car_body.png" id="2_r6pdn"]
 [ext_resource type="Script" path="res://scripts/car_controller.gd" id="3_hamfo"]
 [ext_resource type="Texture2D" uid="uid://dwrkhr1bktgq7" path="res://sprites/wheel.png" id="4_f48eg"]
+[ext_resource type="Texture2D" uid="uid://xjj4skxy3o48" path="res://sprites/car_body_2.png" id="5_1vc15"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,7 +15,60 @@ texture = ExtResource("1_sm0s7")
 texture = ExtResource("2_r6pdn")
 script = ExtResource("3_hamfo")
 
-[node name="Wheel" type="Sprite2D" parent="."]
+[node name="TopLeftWheel" type="Sprite2D" parent="CarBody"]
+position = Vector2(-16, -7)
+texture = ExtResource("4_f48eg")
+
+[node name="TopRightWheel" type="Sprite2D" parent="CarBody"]
+position = Vector2(16, -7)
+texture = ExtResource("4_f48eg")
+
+[node name="DownLeftWheel" type="Sprite2D" parent="CarBody"]
+position = Vector2(-16, 12)
+texture = ExtResource("4_f48eg")
+
+[node name="DownRightWheel" type="Sprite2D" parent="CarBody"]
+position = Vector2(16, 12)
+texture = ExtResource("4_f48eg")
+
+[node name="CarBody2" type="Sprite2D" parent="."]
+position = Vector2(100, -42)
+texture = ExtResource("5_1vc15")
+
+[node name="TopLeftWheel" type="Sprite2D" parent="CarBody2"]
+position = Vector2(-16, -7)
+texture = ExtResource("4_f48eg")
+
+[node name="TopRightWheel" type="Sprite2D" parent="CarBody2"]
+position = Vector2(16, -7)
+texture = ExtResource("4_f48eg")
+
+[node name="DownLeftWheel" type="Sprite2D" parent="CarBody2"]
+position = Vector2(-16, 12)
+texture = ExtResource("4_f48eg")
+
+[node name="DownRightWheel" type="Sprite2D" parent="CarBody2"]
+position = Vector2(16, 12)
+texture = ExtResource("4_f48eg")
+
+[node name="CarBody3" type="Sprite2D" parent="."]
+position = Vector2(99, 57)
+texture = ExtResource("5_1vc15")
+
+[node name="TopLeftWheel" type="Sprite2D" parent="CarBody3"]
+position = Vector2(-16, -7)
+texture = ExtResource("4_f48eg")
+
+[node name="TopRightWheel" type="Sprite2D" parent="CarBody3"]
+position = Vector2(16, -7)
+texture = ExtResource("4_f48eg")
+
+[node name="DownLeftWheel" type="Sprite2D" parent="CarBody3"]
+position = Vector2(-16, 12)
+texture = ExtResource("4_f48eg")
+
+[node name="DownRightWheel" type="Sprite2D" parent="CarBody3"]
+position = Vector2(16, 12)
 texture = ExtResource("4_f48eg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
