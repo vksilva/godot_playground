@@ -9,6 +9,10 @@ var wheel_rotation = deg_to_rad(25)
 
 @onready var top_left_wheel = $TopLeftWheel
 @onready var top_right_wheel = $TopRightWheel
+@onready var area_2d = $Area2D
+
+func _ready():
+	area_2d.area_entered.connect(_on_area_entered)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -40,3 +44,7 @@ func _process(delta):
 	top_right_wheel.rotation = wheel_current_rotation
 	
 	self.position += self.transform.basis_xform(Vector2.UP) * velocity * delta
+
+
+func _on_area_entered(area: Area2D):
+	print("Bonc" + area.name)

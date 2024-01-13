@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcxaqdtblugt7"]
+[gd_scene load_steps=7 format=3 uid="uid://dcxaqdtblugt7"]
 
 [ext_resource type="Texture2D" uid="uid://c2socuaoifhda" path="res://sprites/track.png" id="1_sm0s7"]
 [ext_resource type="Texture2D" uid="uid://odlhjgmm3fuq" path="res://sprites/car_body.png" id="2_r6pdn"]
 [ext_resource type="Script" path="res://scripts/car_controller.gd" id="3_hamfo"]
 [ext_resource type="Texture2D" uid="uid://dwrkhr1bktgq7" path="res://sprites/wheel.png" id="4_f48eg"]
 [ext_resource type="Texture2D" uid="uid://xjj4skxy3o48" path="res://sprites/car_body_2.png" id="5_1vc15"]
+[ext_resource type="Script" path="res://scripts/game_controller.gd" id="6_wr8rc"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -31,8 +32,13 @@ texture = ExtResource("4_f48eg")
 position = Vector2(16, 12)
 texture = ExtResource("4_f48eg")
 
+[node name="Area2D" type="Area2D" parent="CarBody"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CarBody/Area2D"]
+polygon = PackedVector2Array(-12, -18, 12, -18, 12, -13, 19, -13, 19, -1, 12, -1, 12, 6, 19, 6, 19, 18, 12, 18, 12, 19, -12, 19, -12, 18, -19, 18, -19, 6, -12, 6, -12, -1, -19, -1, -19, -14, -12, -14)
+
 [node name="CarBody2" type="Sprite2D" parent="."]
-position = Vector2(100, -42)
+position = Vector2(98, -37)
 texture = ExtResource("5_1vc15")
 
 [node name="TopLeftWheel" type="Sprite2D" parent="CarBody2"]
@@ -50,6 +56,11 @@ texture = ExtResource("4_f48eg")
 [node name="DownRightWheel" type="Sprite2D" parent="CarBody2"]
 position = Vector2(16, 12)
 texture = ExtResource("4_f48eg")
+
+[node name="Area2D" type="Area2D" parent="CarBody2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CarBody2/Area2D"]
+polygon = PackedVector2Array(-12, -18, 12, -18, 12, -13, 19, -13, 19, -1, 12, -1, 12, 6, 19, 6, 19, 18, 12, 18, 12, 19, -12, 19, -12, 18, -19, 18, -19, 6, -12, 6, -12, -1, -19, -1, -19, -14, -12, -14)
 
 [node name="CarBody3" type="Sprite2D" parent="."]
 position = Vector2(99, 57)
@@ -71,4 +82,12 @@ texture = ExtResource("4_f48eg")
 position = Vector2(16, 12)
 texture = ExtResource("4_f48eg")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="CarBody3"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CarBody3/StaticBody2D"]
+polygon = PackedVector2Array(-12, -18, 12, -18, 12, -13, 19, -13, 19, -1, 12, -1, 12, 6, 19, 6, 19, 18, 12, 18, 12, 19, -12, 19, -12, 18, -19, 18, -19, 6, -12, 6, -12, -1, -19, -1, -19, -14, -12, -14)
+
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("6_wr8rc")
