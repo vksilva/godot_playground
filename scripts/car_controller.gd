@@ -6,16 +6,20 @@ var max_velocity = 100
 var friction = 200
 var acceleration = 100
 var wheel_rotation = deg_to_rad(25)
+var is_car_crashed = false
 
 @onready var top_left_wheel = $TopLeftWheel
 @onready var top_right_wheel = $TopRightWheel
 @onready var area_2d = $Area2D
+@onready var audio_stream: AudioStreamPlayer2D = $"../AudioStreamPlayer2D"
 
 func _ready():
-	area_2d.area_entered.connect(_on_area_entered)
+	area_2d.area_entered.connect(_on_area_entered)	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if is_car_crashed:
+		return
 	var wheel_current_rotation = 0
 	var up_or_down = false
 	
@@ -48,3 +52,5 @@ func _process(delta):
 
 func _on_area_entered(area: Area2D):
 	print("Bonc" + area.name)
+	audio_stream.play()
+	is_car_crashed = true
