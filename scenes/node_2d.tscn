@@ -1,92 +1,102 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcxaqdtblugt7"]
+[gd_scene load_steps=9 format=3 uid="uid://dcxaqdtblugt7"]
 
-[ext_resource type="Texture2D" uid="uid://c2socuaoifhda" path="res://sprites/track.png" id="1_sm0s7"]
-[ext_resource type="Texture2D" uid="uid://odlhjgmm3fuq" path="res://sprites/car_body.png" id="2_r6pdn"]
+[ext_resource type="Texture2D" uid="uid://bqadxwhjewyj3" path="res://sprites/track_street.png" id="1_188m1"]
+[ext_resource type="Texture2D" uid="uid://ds3qt3t3gkcva" path="res://sprites/wheel_small.png" id="3_4egyr"]
 [ext_resource type="Script" path="res://scripts/car_controller.gd" id="3_hamfo"]
-[ext_resource type="Texture2D" uid="uid://dwrkhr1bktgq7" path="res://sprites/wheel.png" id="4_f48eg"]
-[ext_resource type="Texture2D" uid="uid://xjj4skxy3o48" path="res://sprites/car_body_2.png" id="5_1vc15"]
+[ext_resource type="Texture2D" uid="uid://boorlf3eakk1e" path="res://sprites/car_body_red.png" id="4_2k8vu"]
+[ext_resource type="Texture2D" uid="uid://dg34ouwaw5o81" path="res://sprites/car_body_silver.png" id="5_xx646"]
+[ext_resource type="Texture2D" uid="uid://c4i30rhsa4cdc" path="res://sprites/car_body_purple.png" id="6_eqkc5"]
 [ext_resource type="Script" path="res://scripts/game_controller.gd" id="6_wr8rc"]
 [ext_resource type="AudioStream" uid="uid://chjqn5wagreqq" path="res://sounds/crash.wav" id="7_ui5a8"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Track" type="Sprite2D" parent="."]
-texture = ExtResource("1_sm0s7")
+texture = ExtResource("1_188m1")
 
-[node name="CarBody" type="Sprite2D" parent="."]
-texture = ExtResource("2_r6pdn")
+[node name="CarBody" type="Node2D" parent="."]
 script = ExtResource("3_hamfo")
 
 [node name="TopLeftWheel" type="Sprite2D" parent="CarBody"]
-position = Vector2(-16, -7)
-texture = ExtResource("4_f48eg")
+position = Vector2(-12, -15)
+texture = ExtResource("3_4egyr")
 
 [node name="TopRightWheel" type="Sprite2D" parent="CarBody"]
-position = Vector2(16, -7)
-texture = ExtResource("4_f48eg")
+position = Vector2(12, -15)
+texture = ExtResource("3_4egyr")
 
 [node name="DownLeftWheel" type="Sprite2D" parent="CarBody"]
-position = Vector2(-16, 12)
-texture = ExtResource("4_f48eg")
+position = Vector2(-12, 11)
+texture = ExtResource("3_4egyr")
 
 [node name="DownRightWheel" type="Sprite2D" parent="CarBody"]
-position = Vector2(16, 12)
-texture = ExtResource("4_f48eg")
+position = Vector2(12, 11)
+texture = ExtResource("3_4egyr")
 
 [node name="Area2D" type="Area2D" parent="CarBody"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CarBody/Area2D"]
-polygon = PackedVector2Array(-12, -18, 12, -18, 12, -13, 19, -13, 19, -1, 12, -1, 12, 6, 19, 6, 19, 18, 12, 18, 12, 19, -12, 19, -12, 18, -19, 18, -19, 6, -12, 6, -12, -1, -19, -1, -19, -14, -12, -14)
+position = Vector2(0, -2)
+polygon = PackedVector2Array(-12, -22, -9, -25, -6, -27, 6, -27, 9, -25, 12, -22, 12, -18, 14, -18, 14, -8, 12, -8, 12, 7, 14, 7, 14, 18, 12, 18, 12, 27, 10, 27, 10, 28, -10, 28, -10.0882, 27, -12, 27, -12, 18, -14, 18, -14, 8, -12, 8, -12, -8, -14, -8, -14, -18, -12, -18)
 
-[node name="CarBody2" type="Sprite2D" parent="."]
-position = Vector2(98, -37)
-texture = ExtResource("5_1vc15")
+[node name="Sprite2D" type="Sprite2D" parent="CarBody"]
+texture = ExtResource("4_2k8vu")
 
-[node name="TopLeftWheel" type="Sprite2D" parent="CarBody2"]
-position = Vector2(-16, -7)
-texture = ExtResource("4_f48eg")
+[node name="CarBody4" type="Node2D" parent="."]
+position = Vector2(47, -49)
 
-[node name="TopRightWheel" type="Sprite2D" parent="CarBody2"]
-position = Vector2(16, -7)
-texture = ExtResource("4_f48eg")
+[node name="TopLeftWheel" type="Sprite2D" parent="CarBody4"]
+position = Vector2(-12, -15)
+texture = ExtResource("3_4egyr")
 
-[node name="DownLeftWheel" type="Sprite2D" parent="CarBody2"]
-position = Vector2(-16, 12)
-texture = ExtResource("4_f48eg")
+[node name="TopRightWheel" type="Sprite2D" parent="CarBody4"]
+position = Vector2(12, -15)
+texture = ExtResource("3_4egyr")
 
-[node name="DownRightWheel" type="Sprite2D" parent="CarBody2"]
-position = Vector2(16, 12)
-texture = ExtResource("4_f48eg")
+[node name="DownLeftWheel" type="Sprite2D" parent="CarBody4"]
+position = Vector2(-12, 11)
+texture = ExtResource("3_4egyr")
 
-[node name="Area2D" type="Area2D" parent="CarBody2"]
+[node name="DownRightWheel" type="Sprite2D" parent="CarBody4"]
+position = Vector2(12, 11)
+texture = ExtResource("3_4egyr")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CarBody2/Area2D"]
-polygon = PackedVector2Array(-12, -18, 12, -18, 12, -13, 19, -13, 19, -1, 12, -1, 12, 6, 19, 6, 19, 18, 12, 18, 12, 19, -12, 19, -12, 18, -19, 18, -19, 6, -12, 6, -12, -1, -19, -1, -19, -14, -12, -14)
+[node name="Area2D" type="Area2D" parent="CarBody4"]
 
-[node name="CarBody3" type="Sprite2D" parent="."]
-position = Vector2(99, 57)
-texture = ExtResource("5_1vc15")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CarBody4/Area2D"]
+position = Vector2(0, -2)
+polygon = PackedVector2Array(-12, -22, -9, -25, -6, -27, 6, -27, 9, -25, 12, -22, 12, -18, 14, -18, 14, -8, 12, -8, 12, 7, 14, 7, 14, 18, 12, 18, 12, 27, 10, 27, 10, 28, -10, 28, -10.0882, 27, -12, 27, -12, 18, -14, 18, -14, 8, -12, 8, -12, -8, -14, -8, -14, -18, -12, -18)
 
-[node name="TopLeftWheel" type="Sprite2D" parent="CarBody3"]
-position = Vector2(-16, -7)
-texture = ExtResource("4_f48eg")
+[node name="Sprite2D" type="Sprite2D" parent="CarBody4"]
+texture = ExtResource("5_xx646")
 
-[node name="TopRightWheel" type="Sprite2D" parent="CarBody3"]
-position = Vector2(16, -7)
-texture = ExtResource("4_f48eg")
+[node name="CarBody5" type="Node2D" parent="."]
+position = Vector2(47, 82)
 
-[node name="DownLeftWheel" type="Sprite2D" parent="CarBody3"]
-position = Vector2(-16, 12)
-texture = ExtResource("4_f48eg")
+[node name="TopLeftWheel" type="Sprite2D" parent="CarBody5"]
+position = Vector2(-12, -15)
+texture = ExtResource("3_4egyr")
 
-[node name="DownRightWheel" type="Sprite2D" parent="CarBody3"]
-position = Vector2(16, 12)
-texture = ExtResource("4_f48eg")
+[node name="TopRightWheel" type="Sprite2D" parent="CarBody5"]
+position = Vector2(12, -15)
+texture = ExtResource("3_4egyr")
 
-[node name="Area2D" type="Area2D" parent="CarBody3"]
+[node name="DownLeftWheel" type="Sprite2D" parent="CarBody5"]
+position = Vector2(-12, 11)
+texture = ExtResource("3_4egyr")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CarBody3/Area2D"]
-polygon = PackedVector2Array(-12, -18, 12, -18, 12, -13, 19, -13, 19, -1, 12, -1, 12, 6, 19, 6, 19, 18, 12, 18, 12, 19, -12, 19, -12, 18, -19, 18, -19, 6, -12, 6, -12, -1, -19, -1, -19, -14, -12, -14)
+[node name="DownRightWheel" type="Sprite2D" parent="CarBody5"]
+position = Vector2(12, 11)
+texture = ExtResource("3_4egyr")
+
+[node name="Area2D" type="Area2D" parent="CarBody5"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CarBody5/Area2D"]
+position = Vector2(0, -2)
+polygon = PackedVector2Array(-12, -22, -9, -25, -6, -27, 6, -27, 9, -25, 12, -22, 12, -18, 14, -18, 14, -8, 12, -8, 12, 7, 14, 7, 14, 18, 12, 18, 12, 27, 10, 27, 10, 28, -10, 28, -10.0882, 27, -12, 27, -12, 18, -14, 18, -14, 8, -12, 8, -12, -8, -14, -8, -14, -18, -12, -18)
+
+[node name="Sprite2D" type="Sprite2D" parent="CarBody5"]
+texture = ExtResource("6_eqkc5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
