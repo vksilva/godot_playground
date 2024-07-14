@@ -14,43 +14,46 @@ var is_car_crashed = false
 @onready var audio_stream: AudioStreamPlayer2D = $"../AudioStreamPlayer2D"
 
 func _ready():
-	area_2d.area_entered.connect(_on_area_entered)	
+    area_2d.area_entered.connect(_on_area_entered)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_car_crashed:
-		return
-	var wheel_current_rotation = 0
-	var up_or_down = false
-	
-	if Input.is_action_pressed("ui_right"):
-		self.rotation += rotation_speed * delta * (velocity/max_velocity)
-		wheel_current_rotation += wheel_rotation
-	if Input.is_action_pressed("ui_left"):
-		self.rotation -= rotation_speed * delta * (velocity/max_velocity)
-		wheel_current_rotation += -wheel_rotation
-	if Input.is_action_pressed("ui_down"):
-		velocity -= acceleration * delta
-		up_or_down = true
-	if Input.is_action_pressed("ui_up"):
-		velocity += acceleration * delta
-		up_or_down = true
-		
-	if !up_or_down:
-		if velocity > 0:
-			velocity = max( (velocity - friction * delta), 0) 
-		if velocity < 0:
-			velocity = min( (velocity + friction * delta), 0)
-	
-	velocity = clamp(velocity, -max_velocity, max_velocity)
-	
-	top_left_wheel.rotation = wheel_current_rotation
-	top_right_wheel.rotation = wheel_current_rotation
-	
-	self.position += self.transform.basis_xform(Vector2.UP) * velocity * delta
+    if Input.is_key_pressed(KEY_R):
+        get_tree().change_scene_to_file("res://scenes/parking.tscn")
+
+    if is_car_crashed:
+        return
+    var wheel_current_rotation = 0
+    var up_or_down = false
+
+    if Input.is_action_pressed("ui_right"):
+        self.rotation += rotation_speed * delta * (velocity/max_velocity)
+        wheel_current_rotation += wheel_rotation
+    if Input.is_action_pressed("ui_left"):
+        self.rotation -= rotation_speed * delta * (velocity/max_velocity)
+        wheel_current_rotation += -wheel_rotation
+    if Input.is_action_pressed("ui_down"):
+        velocity -= acceleration * delta
+        up_or_down = true
+    if Input.is_action_pressed("ui_up"):
+        velocity += acceleration * delta
+        up_or_down = true
+
+    if !up_or_down:
+        if velocity > 0:
+            velocity = max( (velocity - friction * delta), 0)
+        if velocity < 0:
+            velocity = min( (velocity + friction * delta), 0)
+
+    velocity = clamp(velocity, -max_velocity, max_velocity)
+
+    top_left_wheel.rotation = wheel_current_rotation
+    top_right_wheel.rotation = wheel_current_rotation
+
+    self.position += self.transform.basis_xform(Vector2.UP) * velocity * delta
 
 
 func _on_area_entered(area: Area2D):
-	print("Bonc" + area.name)
-	audio_stream.play()
-	is_car_crashed = true
+    print("Bonc" + area.name)
+    audio_stream.play()
+    is_car_crashed = true
